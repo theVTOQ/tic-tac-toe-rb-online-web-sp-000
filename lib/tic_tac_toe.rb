@@ -22,8 +22,9 @@ proceed = true
     until turn_count == 9
       turn_count += 1
       turn(board)
+      proceed = !over?(board)
     end
-    proceed = !over?(board)
+    
   end
 
   if draw?(board)
