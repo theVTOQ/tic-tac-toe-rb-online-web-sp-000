@@ -1,3 +1,28 @@
+def valid_move?(board, index)
+  index.between?(0,8) && !position_taken?(board, index)
+end
+
+def turn(board)
+  puts "Please enter 1-9:"
+  input = gets.strip
+  index = input_to_index(input)
+  if valid_move?(board, index)
+    move(board, index)
+    display_board(board)
+  else
+    turn(board)
+  end
+end
+
+# Define your play method below
+def play(board)
+  turn_count = 0
+  until turn_count == 9
+    turn_count += 1
+    turn(board)
+  end
+end
+
 def display_board(board)
   puts " #{board[0]} | #{board[1]} | #{board[2]} "
   puts "-----------"
@@ -16,6 +41,13 @@ WIN_COMBINATIONS = [
   [6,4,2],
   [0,4,8]
 ]
+def input_to_index(user_input)
+  user_input.to_i - 1
+end
+
+def move(board, index, current_player = "X")
+  board[index] = current_player
+end
 
 def position_taken?(board, index)
   !(board[index].nil? || board[index] == " ")
