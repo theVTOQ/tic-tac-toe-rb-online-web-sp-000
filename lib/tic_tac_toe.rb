@@ -23,6 +23,14 @@ def play(board)
       turn(board)
     end
   end
+
+  if draw?(board)
+    puts "Cat's Game!"
+  else
+    winning_player = winner(board)
+    puts "Congratulations #{winning_player}!"
+  end
+  
 end
 
 def display_board(board)
