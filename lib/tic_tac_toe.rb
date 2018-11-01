@@ -16,13 +16,10 @@ end
 
 # Define your play method below
 def play(board)
-  while !over?(board)
-    turn_count = 0
-    until turn_count == 9 || over?(board)
-      turn_count += 1
-      turn(board)
-    end
-
+  turn_count = 0
+  until turn_count == 9 || over?(board)
+    turn_count += 1
+    turn(board)
   end
 
   if draw?(board)
